@@ -179,8 +179,8 @@ const sorted_list = [];
 for (i = 0; i < 9; ++i) sorted_list[i] = i;
 console.log("sorted_list", sorted_list);
 
-//Binary search
-console.log("\n\t=*= Binary search =*=\n ");
+//Binary search O(log n)
+console.log("\n\t=*= Binary search =*= O(log n)\n ");
 function binary_search(_list, _target) {
     let first = 0;
     let last = _list.length - 1;
@@ -227,15 +227,15 @@ function verify_recursive_binary_search(_number) {
 verify_recursive_binary_search(8);
 verify_recursive_binary_search(9);
 
-//Verify merge algo.
+//Verify sort algo.
 function verify_sort(_list) {
     if (_list.length <= 1) return true;
     return _list[0] <= _list[1] && verify_sort(_list.slice(1));
 }
 const shuffle_list = shuffle([...sorted_list]);
 
-//Merge sort
-console.log("\n\t==*== Merge sort ==*==\n ");
+//Merge sort O(n log n)
+console.log("\n\t==*== Merge sort ==*== O(n log n)\n ");
 function merge_sort(_list) {
     if (_list.length <= 1) return _list;
 
@@ -256,12 +256,16 @@ function merge(_left, _right) {
             sorted_l.push(_right[j++]);
         }
     }
-    while (i < _left.length) {
-        sorted_l.push(_left[i++]);
-    }
-    while (j < _right.length) {
-        sorted_l.push(_right[j++]);
-    }
+
+    sorted_l = sorted_l.concat(_left.slice(i));
+    // while (i < _left.length) {
+    //     sorted_l.push(_left[i++]);
+    // }
+    sorted_l = sorted_l.concat(_right.slice(j));
+    // while (j < _right.length) {
+    //     sorted_l.push(_right[j++]);
+    // }
+
     console.log("[sorted_list]", sorted_l);
     return sorted_l;
 }
@@ -273,8 +277,8 @@ console.log(
     verify_sort(merge_sort_shuffle_list)
 );
 
-//Quick sort
-console.log("\n\t==*== Quick sort ==*==\n ");
+//Quick sort O(n log n)-O(n2)
+console.log("\n\t==*== Quick sort ==*== O(n log n)-O(n2)\n ");
 function quick_sort(_list) {
     if (_list.length <= 1) return _list;
 
