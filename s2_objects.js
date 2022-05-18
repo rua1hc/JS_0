@@ -84,6 +84,7 @@ function Stopwatch() {
             return;
         }
         start = Date.now();
+        // start = new Date();
         running = true;
     };
 
@@ -93,12 +94,19 @@ function Stopwatch() {
             return;
         }
         end = Date.now();
-        this.duration += end - start;
+        this.duration += (end - start) / 1000;
+
+        // end = new Date().getTime();
+        // this.duration += end.getTime() - start.getTime() / 1000;
+
         running = false;
     };
 
     this.reset = function () {
         this.duration = 0;
         running = false;
+
+        start = null;
+        end = null;
     };
 }
