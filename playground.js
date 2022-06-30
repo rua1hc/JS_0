@@ -2,6 +2,7 @@ class Base {
     baseValue = 1;
     baseAdd() {
         this.childValue++;
+        console.log(this);
         console.log("baseAdd:", this.childValue);
     }
 }
@@ -24,4 +25,4 @@ c.baseAdd();
 console.log("=====m=====");
 
 // b.childAdd(); // ERROR!
-c.childAdd();
+// c.childAdd();
